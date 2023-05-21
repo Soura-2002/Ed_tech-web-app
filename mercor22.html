@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body style="font-family: Arial, sans-serif;">
+  <div id="chat-container" style="width: 400px;  margin: 20px auto; border: 1px solid #ccc; padding: 10px; border-radius: 5px;">
+    <div id="message-container" style="height: 300px; overflow-y: scroll; padding: 10px; background-color: #f7f7f7; border: 1px solid #ccc; border-radius: 5px; " ></div>
+    <div id="input-container" style="margin-top: 10px;">
+      <input type="text" id="user-input" placeholder="Type your message..." style="width: 300px; padding: 5px;">
+      <button id="send-btn" style="padding: 5px 10px;" >Send</button>
+    </div>
+  </div>
+  <script>
+ const sendBtn = document.getElementById('send-btn');
+
+sendBtn.addEventListener('click', sendMessage);
+
+function sendMessage() {
+  const userMessage = userInput.value;
+  displayMessage(userMessage, 'user');
+  processUserInput(userMessage);
+  userInput.value = '';
+}
+
+function displayMessage(message, sender) {
+  const messageElement = document.createElement('div');
+  messageElement.classList.add('message', sender);
+  messageElement.innerText = message;
+  messageContainer.appendChild(messageElement);
+}
+
+function processUserInput(userMessage) {
+  
+  const aiResponse = getAIResponse(userMessage);
+  displayMessage(aiResponse, 'ai');
+  
+}
+
+function getAIResponse(userMessage) {
+  
+  return 'This is the AI\'s response.';
+}
+</script>
+</body>
+</html>
